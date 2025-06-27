@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block importmap %}
-	{# importmap('register') #}
+	{{ importmap('register') }}
 {% endblock %}
 
 {% block body %}
@@ -17,10 +17,9 @@
 					<h6 class="text-yellow-300 text-sm font-semibold">Créer votre compte</h6>
 					<p class="text-[12px] italic text-gray-300 mt-2 leading-relaxed">Bienvenue sur la page d'inscription.
 					</p>
-					<p class="text-[12px] italic text-gray-300 mt-2 leading-relaxed">Indiquez votre email et saisissez votre mot de passe.
-					</p>
 					<ul id="allowState">
 						<li id="allowEmail" class="text-[12px] italic mt-4 ml-3 leading-relaxed"></li>
+						<li id="allowPseudo" class="text-[12px] italic mt-1 ml-3 leading-relaxed"></li>
 						<li id="allowPassword" class="text-[12px] italic mt-1 ml-3 leading-relaxed"></li>
 						<li id="allowAgreeTerms" class="text-[12px] italic mt-1 ml-3 leading-relaxed"></li>
 					</ul>

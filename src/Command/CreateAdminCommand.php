@@ -11,6 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[AsCommand(name: 'create-administrator',description: 'Creation compte Administrateur')]
 class CreateAdminCommand extends Command
@@ -53,7 +54,7 @@ class CreateAdminCommand extends Command
 
         $admin = new User();
         $admin->setEmail($email)
-            ->setPassword($plainPassword)
+            ->setPlainPassword($plainPassword)
             ->setPseudo($pseudo)
             ->setRoles(['ROLE_ADMIN'])
             ->setCreatedAt(new  \DateTimeImmutable())

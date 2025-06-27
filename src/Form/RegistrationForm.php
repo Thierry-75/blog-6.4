@@ -28,7 +28,7 @@ class RegistrationForm extends AbstractType
                 'attr' => [
                     'class' => 'input-gray',
                     'placeholder' => 'Adresse courriel',
-                    'autofocus' => false,
+                    'autofocus'=>true,
                     'required' => true
                 ],
                 'constraints' => [
@@ -76,7 +76,7 @@ class RegistrationForm extends AbstractType
             ->add('agreeTerms', CheckboxType::class, [
                 'attr' => [
                     'class' => 'w-4 h-4 border border-gray-50 shadow-inner rounded-lg bg-gray-100 focus:ring-3 focus:ring-primary-300',
-
+                    'required'=>true
                 ],
                 'label' => ' Accepter les conditions générales',
                 'label_attr' => ['class' => 'font-light text-gray-500 ml-4 dark:text-gray-300 text-xs', 'id' => 'agree_state'],

@@ -52,11 +52,13 @@ const controlPassword = function (champ) {
 }
 
 const controlPseudo = function (champ) {
-    const pseudoRegex = new RegExp('[A-Za-z]{10,27}#[0-9]{1,3}$');
+    const pseudoRegex = new RegExp('^.{6,10}#[0-9]{2}$');
     if (champ.value.match(pseudoRegex)) {
         successBorder(champ);
+        return true;
     } else {
         alertBorder(champ);
+        return false;
     }
 }
 
@@ -81,15 +83,15 @@ const controlTerms = function (champ, slogan) {
     if (!champ.checked) {
         slogan = "";
         info(message, slogan);
-        let text = 'Accepter les conditions générales !';
+        let text = 'Accepter les R.G.P.D !';
         redField(allowAgreeTerms, text);
         champ.classList.remove('border', 'border-gray-50');
         champ.style.outline = '2px solid #fca5a5';
     }
 }
 
-const checkFields = function (champ1, champ2, champ3, bouton) {
-    if (champ1.classList.contains('border-green-300') && champ2.classList.contains('border-green-300') && champ3.checked) {
+const checkFields = function (champ1, champ2, champ3,champ4, bouton) {
+    if (champ1.classList.contains('border-green-300') && champ2.classList.contains('border-green-300')&& champ3.classList.contains('border-green-300') && champ4.checked) {
         message.innerHTML = "";
         bouton.classList.remove('btn-confirmation');
         bouton.classList.add('btn-validation');
@@ -134,6 +136,12 @@ const initialEmail = function () {
     allowEmail.style.display = 'none';
     allowEmail.innerHTML = '';
     allowEmail.classList.remove('text-red-300', 'text-green-300');
+}
+
+const initialPseudo = function () {
+    allowPseudo.style.display = 'none';
+    allowPseudo.innerHTML = '';
+    allowPseudo.classList.remove('text-red-300', 'text-green-300');
 }
 
 const greenField = function (champ, text) {
@@ -230,6 +238,6 @@ const eyePassword = function(input,btn){
 
 
 export {
-    clearBorder, alertBorder, successBorder, clearField, controlEmail, info, greenField, controlPassword, checkPasswords, controlPseudo,eyePassword,
+    clearBorder, alertBorder, successBorder, clearField, controlEmail, info, greenField, controlPassword, checkPasswords, controlPseudo,eyePassword,initialPseudo,
     redField, initialEmail, controlTerms, checkFields, controlRemember, clearRemember, agreeTermsControl, yellowfield, checkEmail,checkAvatarForm,validateImage
 }; // a list of exported variables
