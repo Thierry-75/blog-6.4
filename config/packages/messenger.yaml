@@ -17,5 +17,6 @@ framework:
             App\Message\SendActivationMessage: async
             App\Message\SendPasswordRequest: async
             App\Message\SendPasswordConfirm: async
+            App\Message\SendEmailNotification: async
 
             # Route your messages to the transports

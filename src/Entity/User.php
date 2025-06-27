@@ -53,6 +53,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 13)]
     private ?string $pseudo = null;
 
+    #[ORM\OneToOne(mappedBy: 'suscriber', cascade: ['persist', 'remove'])]
+    private ?Avatar $avatar = null;
+
+    #[ORM\Column]
+    private ?bool $isFull = false;
+
 
     public function getId(): ?int
     {
@@ -195,6 +201,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function setPlainPassword(?string $plainPassword): self {
         $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    public function getAvatar(): ?Avatar
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(Avatar $avatar): static
+    {
+        // set the owning side of the relation if necessary
+        if ($avatar->getSuscriber() !== $this) {
+            $avatar->setSuscriber($this);
+        }
+
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function isFull(): ?bool
+    {
+        return $this->isFull;
+    }
+
+    public function setIsFull(bool $isFull): static
+    {
+        $this->isFull = $isFull;
+
         return $this;
     }
 }

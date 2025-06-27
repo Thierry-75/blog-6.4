@@ -31,8 +31,8 @@ class UserFixtures extends Fixture
             ->setPassword($this->userPasswordHasher->hashPassword($user,'ArethiA75!'))
             ->setIsVerified(mt_rand(0,1===1 ? true : false));
             if($user->IsVerified(true)){
-                $user->setIsNewsLetter(true);
-            
+                $user->setIsNewsLetter(true)
+            ->setIsFull(mt_rand(0,1)===1 ?true:false);
             }
 
             $manager->persist($user);
