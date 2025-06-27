@@ -27,7 +27,7 @@ final class MainController extends AbstractController
                 $destination = 'check_user';
                 $nomTemplate ='register';
                 $intraController->emailValidate($this->getUser(), $jwtService, $messageBus,$destination,$subject,$nomTemplate);
-                    $this->addFlash('alert-danger', 'Vous devez activer votre adresse email ');
+                    $this->addFlash('alert-warning', 'Vous devez activer votre adresse email ');
                     $this->redirectToRoute('app_logout');
                 }
             }
