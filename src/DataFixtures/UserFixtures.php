@@ -25,14 +25,14 @@ class UserFixtures extends Fixture
         {
             $user = new User();
             $user->setEmail($faker->email())
-            ->setRoles(mt_rand(0,1)===1 ? ['ROLE_USER']: ['ROLE_ADMIN'])
+            ->setRoles(mt_rand(0,1)===1 ? ['ROLE_USER']: ['ROLE_REDACTOR'])
             ->setCreatedAt(new \DateTimeImmutable())
             ->setPseudo(mt_rand(0,1)===1 ? $faker->firstNameFemale(). '#' .mt_rand(10,90):$faker->firstNameMale(). '#' .mt_rand(10,90))
             ->setPassword($this->userPasswordHasher->hashPassword($user,'ArethiA75!'))
             ->setIsVerified(mt_rand(0,1===1 ? true : false));
             if($user->IsVerified(true)){
                 $user->setIsNewsLetter(true)
-            ->setIsFull(mt_rand(0,1)===1 ?true:false);
+            ->setIsFull(false);
             }
 
             $manager->persist($user);
