@@ -1,16 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Administration\Inscrit;
 
-use App\Entity\User;
 use App\Form\ChangePasswordForm;
-use App\Service\JwtService;
-use App\Service\MailService;
 use App\Service\IntraController;
 use App\Repository\UserRepository;
 use App\Form\ResetPasswordRequestForm;
-use App\Message\ForgetPasswordMessage;
-use App\Message\SendActivationMessage;
 use App\Message\SendPasswordConfirm;
 use App\Message\SendPasswordRequest;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,7 +19,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class SecurityController extends AbstractController

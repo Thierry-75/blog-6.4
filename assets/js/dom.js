@@ -214,7 +214,19 @@ const validateImage = function (input) {
     }
 }
 
-const checkAvatarForm= function(champ1, champ2, bouton){
+const checkAvatarForm= function(champ1, bouton){
+    if (champ1.classList.contains('border-green-300') ) {
+        bouton.classList.remove('btn-confirmation');
+        bouton.classList.add('btn-validation');
+        bouton.textContent = "Validez votre saisie";
+    } else {
+        bouton.classList.remove('btn-validation');
+        bouton.classList.add('btn-confirmation');
+        bouton.textContent = "Saisir";
+    }
+}
+
+const checkAvatarFormUpdate= function(champ1, champ2, bouton){
     if (champ1.classList.contains('border-green-300') && champ2.classList.contains('border-green-300')) {
         bouton.classList.remove('btn-confirmation');
         bouton.classList.add('btn-validation');
@@ -238,6 +250,7 @@ const eyePassword = function(input,btn){
 
 
 export {
-    clearBorder, alertBorder, successBorder, clearField, controlEmail, info, greenField, controlPassword, checkPasswords, controlPseudo,eyePassword,initialPseudo,
-    redField, initialEmail, controlTerms, checkFields, controlRemember, clearRemember, agreeTermsControl, yellowfield, checkEmail,checkAvatarForm,validateImage
+    clearBorder, alertBorder, successBorder, clearField, controlEmail, info, greenField, controlPassword, checkPasswords,
+    controlPseudo,eyePassword,initialPseudo,redField, initialEmail, controlTerms, checkFields, controlRemember, clearRemember,
+    agreeTermsControl, yellowfield, checkEmail,checkAvatarForm,validateImage,checkAvatarFormUpdate
 }; // a list of exported variables

@@ -20,7 +20,7 @@ class Avatar
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToOne(inversedBy: 'avatar', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'avatar', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $suscriber = null;
 

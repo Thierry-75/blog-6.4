@@ -1,10 +1,10 @@
-import { info, controlPseudo, successBorder, alertBorder, checkAvatarForm, validateImage } from './dom.js';
+import { info, controlPseudo, successBorder, alertBorder, checkAvatarFormUpdate, validateImage } from './dom.js';
 
 window.onload = () => {
-    const avatar_form = document.body.querySelector('#avatar_update_form');
+    const avatar_form = document.body.querySelector('#avatar_update_form'); 
     if (avatar_form) {
-        const avatar_form_pseudo = avatar_form.querySelector('#update_avatar_form_pseudo');
-        const avatar_form_image = avatar_form.querySelector('#update_avatar_form_image');
+        const avatar_form_pseudo = avatar_form.querySelector('#update_avatar_form_type_form_pseudo');
+        const avatar_form_image = avatar_form.querySelector('#update_avatar_form_type_form_image');
         const avatar_form_submit = avatar_form.querySelector('#avatar_update_form_submit');
         let information = "Modifiez votre pseudonyme";
         info(message, information);
@@ -16,12 +16,12 @@ window.onload = () => {
 
         avatar_form_pseudo.addEventListener('input', function () {
             controlPseudo(this);
-            checkAvatarForm(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
+            checkAvatarFormUpdate(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
         });
 
         avatar_form_pseudo.addEventListener('blur', function () {
             controlPseudo(this);
-            checkAvatarForm(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
+            checkAvatarFormUpdate(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
         });
 
         avatar_form_image.addEventListener('focus', function () {
@@ -37,7 +37,7 @@ window.onload = () => {
             else {
                 alertBorder(this);
             }
-            checkAvatarForm(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
+            checkAvatarFormUpdate(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
 
         });
         avatar_form_image.addEventListener('blur', function () {
@@ -49,7 +49,7 @@ window.onload = () => {
             else {
                 alertBorder(this);
             }
-            checkAvatarForm(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
+            checkAvatarFormUpdate(avatar_form_pseudo, avatar_form_image, avatar_form_submit);
         });
 
         avatar_form_submit.addEventListener('focus',function(){

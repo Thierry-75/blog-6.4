@@ -15,14 +15,14 @@
 				<header class="mx-auto max-w-2xl text-center">
 					<h1 class="text-3xl text-orange-900 font-extrabold tracking-tight sm:text-4xl">Saisir votre profile</h1>
 					<p class="mt-2 text-sm font-semibold text-sky-900" id="message">
-						Indiquez votre pseudonyme et votre avatar
+						
 					</p>
 
 				</header>
 			</div>
 			{{ form_start(avatarForm, {attr: {
                 class: 'max-w-sm mx-auto',
-                id: 'avatar_form',
+                id: 'avatar_form_type_form',
 			
             }})}}
 			<div class="col-span-full">
@@ -35,9 +35,9 @@
 				</div>
 			</div>
 
-			<div class="mb-6 mx-2 pt-4">
+			<div class="mb-4 mt-4 mx-2 pt-4">
 				<p class="preview">
-					<img id="imageAvatar" src="" alt="">
+					<img id="imageAvatar" class="h-92 w-96 src="" alt="">
 				</p>
 
 				<p class="text-center" id="error"></p>
@@ -55,10 +55,7 @@
 					</button>
 				</div>
 				{{ form_end(avatarForm)}}
-
 			</div>
 		</div>
-
-
 	</div>
 {% endblock %}

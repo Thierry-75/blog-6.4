@@ -48,7 +48,7 @@ class RegistrationForm extends AbstractType
                 ],
                 'constraints' => [
                     new Sequentially([
-                        new NotBlank(message: ""),
+                        new NotBlank(message: "13"),
                         new Regex(
                             pattern:'/^.{6,10}#[0-9]{2}$/i',
                             htmlPattern:'^.{6,10}#[0-9]{2}$')
