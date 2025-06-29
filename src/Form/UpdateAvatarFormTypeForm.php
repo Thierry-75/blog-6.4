@@ -47,7 +47,7 @@ class UpdateAvatarFormTypeForm extends AbstractType
                     ),
                     new File(
                         maxSize:'1M',
-                        maxSizeMessage:'Max 1024 Mo',
+                        maxSizeMessage:'Maximum 1 Mo',
                         extensions:['png'],
                         extensionsMessage:'Image de type png'
                     )

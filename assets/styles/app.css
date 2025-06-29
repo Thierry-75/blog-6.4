@@ -63,7 +63,22 @@
         .input-gray {
           @apply my-5 shadow-inner bg-zinc-50 rounded-lg placeholder-gray-500 text-sm p-4 md:p-2 block mt-1 w-full;
         }
+        .input-toto {
+          @apply my-5 shadow-inner bg-zinc-50 rounded-lg placeholder-gray-500 text-sm p-4 md:p-2 block mt-1 w-full;
+        }
+
       
+  }
+
+  #article_form_title{
+    background-color: #FFFFFF !;
+  }
+
+   #article_form_content{
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    background-color: #FFFFFF !;
   }
 
   span.ripple {

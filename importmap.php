@@ -40,6 +40,7 @@ return [
         'path' => './assets/js/avatar_update.js',
         'entrypoint' => true,
     ],
+
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],

@@ -48,7 +48,7 @@ class CreateAdminCommand extends Command
         }
         $password = $input->getArgument('password');
         if(!$password){
-            $question = new Question('Quel est votre mot de passe (12 caractères) ? : ');
+            $question = new Question('Quel est votre mot de passe (10 caractères) ? : ');
             $plainPassword = $helper->ask($input,$output,$question);
         }
 

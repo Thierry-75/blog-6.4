@@ -18,6 +18,8 @@ class IntraController extends AbstractController
     private $webmaster = 'webmaster@my-domain.org';
 
     private string $folder = "avatars";
+    
+    private string $folderArticle ="articles";
 
     private string $destination="null";
 
@@ -33,6 +35,11 @@ class IntraController extends AbstractController
     public  function getFolder(): ?string
     {
         return $this->folder;
+    }
+
+    public  function getFolderArticle(): ?string
+    {
+        return $this->folderArticle;
     }
 
     public  function getDestination(): ?string
