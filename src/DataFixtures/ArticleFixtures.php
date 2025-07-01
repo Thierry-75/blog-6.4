@@ -40,9 +40,10 @@ class ArticleFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $article = new Article();
             $article->setUser($autor)
-                ->setTitle($faker->sentence(4))
+                ->setTitle($faker->sentence(3))
                 ->setSlug(strtolower($faker->slug()))
                 ->setCreatedAt(new \DateTimeImmutable())
+                ->setState(mt_rand(0,1)===1 ? Article::STATES[0]:Article::STATES[1])
                 ->setContent($faker->paragraph())
                 ->setImage('default.webp');
             $manager->persist($article);

@@ -5,10 +5,12 @@ namespace App\Controller\Administration\Redaction;
 use App\Entity\Article;
 use App\Form\ArticleForm;
 use App\Message\SendEmailNotification;
+use App\Repository\ArticleRepository;
 use App\Service\IntraController;
 use App\Service\PhotoService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityNotFoundException;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,8 +21,22 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class ArticleController extends AbstractController
 {
+    #[Route('/articles',name:'app_articles_index',methods:['GET'])]
+    public function index(ArticleRepository $articleRepository,PaginatorInterface $paginatorInterface,Request $request): Response
+    {
+        
+        $data =$articleRepository->findPublished();
+        $articles = $paginatorInterface->paginate(
+            $data,
+            $request->query->getInt('page',1),
+            9
+        );
+        return $this->render('article/index.html.twig',['articles'=>$articles]);
+    }
+
+
     #[Route('/article/add', name: 'app_article_add', methods: ['GET', 'POST'])]
-    public function index(Request $request, ValidatorInterface $validator, EntityManagerInterface $em, 
+    public function add_article(Request $request, ValidatorInterface $validator, EntityManagerInterface $em, 
     PhotoService $photoService, IntraController $intra_controller,MessageBusInterface $messageBus): Response
     {
         $article = new Article();
