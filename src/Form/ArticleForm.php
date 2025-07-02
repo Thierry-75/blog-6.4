@@ -70,6 +70,7 @@ class ArticleForm extends AbstractType
         $data = $event->getData();
         if (!($data instanceof Article)) return;
         $data->setCreatedAt(new \DateTimeImmutable());
+        $data->setSlug(strtolower($data->getTitle()));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

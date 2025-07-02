@@ -45,7 +45,7 @@ class ArticleFixtures extends Fixture
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setState(mt_rand(0,1)===1 ? Article::STATES[0]:Article::STATES[1])
                 ->setContent($faker->paragraph())
-                ->setImage('default.webp');
+                ->setImage(mt_rand(0,1) === 1 ? 'default.webp':'default2.webp');
             $manager->persist($article);
         }
         $manager->persist($autor);

@@ -19,7 +19,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class RegistrationController extends AbstractController
 {
-
     #[Route('/register', name: 'app_register', methods: ['GET', 'POST'])]
     public function register(
         Request $request,
@@ -33,7 +32,6 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);
         $form->handleRequest($request);
-
         if ($request->isMethod('POST')) {
             $errors = $validator->validate($request);
             if (count($errors) > 0) {
@@ -53,7 +51,7 @@ class RegistrationController extends AbstractController
                 $subject = 'Activation de votre compte';
                 $destination = 'check_user';
                 $nomTemplate = 'register';
-                $intraController->emailValidate($user, $jwtService, $messageBus,$destination,$subject,$nomTemplate);
+                $intraController->emailValidate($user, $jwtService, $messageBus, $destination, $subject, $nomTemplate);
                 $this->addFlash('alert-warning', 'Vous devez confirmer votre adresse email');
                 return $this->redirectToRoute('app_main');
             } catch (EntityNotFoundException $e) {
@@ -65,23 +63,19 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-        #[Route('/check/{token}', name: 'check_user')]
+    #[Route('/check/{token}', name: 'check_user')]
     public function verifyUser($token, JWTService $jwt, UserRepository $userRepository, EntityManagerInterface $em): Response
     {
         //if token valid, expired & !modified
         if ($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))) {
-
             $payload = $jwt->getPayload($token);
-
             //user token
             $user = $userRepository->find($payload['user_id']);
-
             if ($user && !$user->IsVerified()) {
                 $user->setIsVerified(true)
                     ->setIsNewsLetter(true);
                 $em->persist($user);
                 $em->flush();
-
                 $this->addFlash('alert-success', 'Utilisateur activé');
                 return $this->redirectToRoute('app_login');
             }

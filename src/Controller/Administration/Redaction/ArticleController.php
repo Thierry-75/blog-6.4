@@ -56,6 +56,7 @@ final class ArticleController extends AbstractController
                 if($image->getClientOriginalExtension()=='jpeg' || $image->getClientOriginalExtension()=='jpg'){
                     $fichier= $photoService->add($image,$article->getTitle(),$intra_controller->getFolderArticle(),1024,768);
                     $article->setImage($fichier);
+                    $article->setUser($this->getUser());
                 $em->persist($article);
                 $em->flush();
                 $url = $this->generateUrl('app_main',[],UrlGeneratorInterface::ABSOLUTE_URL);
