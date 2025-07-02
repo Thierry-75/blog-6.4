@@ -20,6 +20,10 @@ return [
         'path' => './assets/js/login.js',
         'entrypoint' => true,
     ],
+    'caroussel' => [
+        'path' => './assets/js/caroussel.js',
+        'entrypoint' => true,
+    ],
     'register' => [
         'path' => './assets/js/register.js',
         'entrypoint' => true,

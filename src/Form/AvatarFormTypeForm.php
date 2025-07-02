@@ -2,12 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use App\Entity\Avatar;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Event\PostSubmitEvent;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Image;
@@ -30,10 +28,10 @@ class AvatarFormTypeForm extends AbstractType
                         maxHeight:'225'
                     ),
                     new File(
-                        maxSize:'1M',
-                        maxSizeMessage:'Max 1024 Mo',
-                        extensions:['png'],
-                        extensionsMessage:'Image de type png'
+                        maxSize:'2M',
+                        maxSizeMessage:'Max 2 Mo',
+                        extensions:['jpeg'],
+                        extensionsMessage:'Image de type jpeg'
                     )
                     
                 ])

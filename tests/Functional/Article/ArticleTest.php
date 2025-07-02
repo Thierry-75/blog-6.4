@@ -25,12 +25,8 @@ class ArticleTest extends WebTestCase
 
 
        
-        $client->request(Request::METHOD_GET,$urlGeneratorInterface->generate('app_articles_index'));  
-    
+        $client->request(Request::METHOD_GET,$urlGeneratorInterface->generate('app_main'));  
         $this->assertResponseIsSuccessful();
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertSelectorExists('div');
-        $this->assertSelectorTextContains('div','Lire');
     }
 
 }

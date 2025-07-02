@@ -54,7 +54,7 @@ final class AvatarController extends AbstractController
             if($form->isSubmitted() && $form->isValid()){
                 try{
                     $photo = $form->get('image')->getData();
-                    if($photo->getClientOriginalExtension()=='png'){
+                    if($photo->getClientOriginalExtension()=='jpeg'){
                         $user = $em->getRepository(User::class)->find($this->getUser());
                         $fichier = $photoService->add($photo,$user->getEmail(),$intraController->getFolder(),128,128);
                         $avatar->setName($fichier);

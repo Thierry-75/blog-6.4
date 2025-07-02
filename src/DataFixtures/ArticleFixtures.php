@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Article;
+use App\Entity\Avatar;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -35,9 +36,15 @@ class ArticleFixtures extends Fixture
             ->setIsVerified(mt_rand(0, 1 === 1 ? true : false));
         if ($autor->IsVerified(true)) {
             $autor->setIsNewsLetter(true)
-                ->setIsFull(false);
+                ->setIsFull(true);
         }
-        for ($i = 0; $i < 10; $i++) {
+        $avatar = new Avatar();
+        $avatar->setName(mt_rand(0,1) === 1? 'default1.jpeg':'default2.jpeg')
+                ->setSuscriber($autor)
+                ->setCreatedAt(new \DateTimeImmutable());
+        $manager->persist($avatar);
+
+        for ($i = 0; $i < 2; $i++) {
             $article = new Article();
             $article->setUser($autor)
                 ->setTitle($faker->sentence(3))

@@ -66,9 +66,35 @@
         .input-toto {
           @apply my-5 shadow-inner bg-zinc-50 rounded-lg placeholder-gray-500 text-sm p-4 md:p-2 block mt-1 w-full;
         }
-
       
   }
+
+  /** Caroussel **/
+        @keyframes fadeIn {
+            from { opacity: 0.4; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .testimonial-card {
+            transition: all 0.5s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .active-dot {
+            transform: scale(1.4);
+            background-color: #0891B2;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #0891B2;
+            color: white;
+        }
 
   #article_form_title{
     background-color: #FFFFFF !;

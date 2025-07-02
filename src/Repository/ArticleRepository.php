@@ -25,9 +25,21 @@ class ArticleRepository extends ServiceEntityRepository
     public function findPublished(): array
     {
         return $this->createQueryBuilder('a')
-        ->where('a.state LIKe :state')
+        ->where('a.state LIKE :state')
         ->setParameter('state','%Publie%')
         ->orderBy('a.createdAt','DESC')
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function mainPublished(): array
+    {
+        return $this->createQueryBuilder('a')
+        ->where('a.state LIKE :state')
+        ->setParameter('state','%Publie%')
+        ->orderBy('a.createdAt','DESC') 
+        ->distinct()
+        ->setMaxResults (9)
         ->getQuery()
         ->getResult();
     }

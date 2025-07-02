@@ -199,12 +199,12 @@ const validateImage = function (input) {
             }
         }
         if (file.size > 1024 * 1024 * 2) {
-            error.innerHTML = "Le ficheir doit être plus petit que 1 MB";
+            error.innerHTML = "Le ficheir doit être plus petit que 2 MB";
             return false;
         }
-        let allowedImageTypes = ['image/png'];
+        let allowedImageTypes = ['image/Jpeg'];
         if (!allowedImageTypes.includes(file.type)) {
-            error.innerHTML = "Uniquement un fichier de type .png";
+            error.innerHTML = "Uniquement un fichier de type .jpeg";
             error.style.color = "red";
             return false;
         }
